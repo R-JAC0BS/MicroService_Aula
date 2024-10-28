@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: saudacao-service
+  profiles:
+    active:
+      - es
+  config:
+    import:
+      - optional:configserver:http://localhost:8888
+
+server:
+  port: 8081
+
+saudacao-service:
+  saudacao: Hello
+  nome-padrao: World
+
+eureka:
+   client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka
+   instance:
+      prefer-ip-address: true

@@ -1,0 +1,49 @@
+server:
+  port: 8100
+spring:
+  application:
+    name: cambio-service
+  datasource:
+    url: jdbc:postgresql://localhost/cambio_db_b
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    locations:
+    - classpath:/db_migration
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=500,expireAfterWrite=10m
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      cotacaoClient:
+        register-health-indicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automatic-transition-from-open-to-half-open-enabled: true
