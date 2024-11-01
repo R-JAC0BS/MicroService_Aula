@@ -21,17 +21,17 @@ public class ApiGatewayConfig {
 			.route(rota -> rota
 					.path("/cambio-service/**")
 					.filters(f -> f
-							.addRequestHeader("Usuario", "Vinicius Pereira Polli"))
+							.addRequestHeader("Usuario", "Roberto Jacobs""))
 					.uri("lb://cambio-service"))
 			.route(rota -> rota
 					.path("/produto-service/**")
 					.filters(f -> f
-							.addRequestHeader("Usuario", "Vinicius Pereira Polli"))
+							.addRequestHeader("Usuario", "Roberto Jacobs""))
 					.uri("lb://produto-service"))
 			.route(rota -> rota
 					.path("/saudacao-service/**")
 					.filters(f -> f
-							.addRequestHeader("Usuario", "Vinicius Pereira Polli"))
+							.addRequestHeader("Usuario", "Roberto Jacobs""))
 					.uri("lb://saudacao-service"))
 			.build();
 	}
