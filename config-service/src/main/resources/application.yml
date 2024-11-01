@@ -7,8 +7,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/luciano-ferretto/ParadLingProg_202402_TurmaB
+          uri: https://github.com/R-JAC0BS/MicroService_Aula
           search-paths:
           - microservices-java/configs/{application}
-          #username: luciano-ferretto
-          #password: senha
+         
